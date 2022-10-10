@@ -11,7 +11,6 @@ public class Employee extends Person {
     public Employee() {
 
     }
-
     public Employee(String name, int age, int salary, String company) {
         super(name, age);
         this.salary = salary;
@@ -20,8 +19,9 @@ public class Employee extends Person {
 
     public Employee(List<Employee> employeeList, int ammount) {
         super(employeeList, ammount);
-        //this.getSalary(employeeList,ammount);
+
     }
+
 
     public int getSalary() {
         return salary;
@@ -31,14 +31,6 @@ public class Employee extends Person {
         return company;
     }
 
-    @Override
-    public String toString() {
-        return "Employee{ Name " + super.getName() + " age " +
-                super.getAge() + " " +
-                "salary=" + salary +
-                ", company='" + company + '\'' +
-                '}';
-    }
 
     public void getSalaryMore(List<Employee> lista, int ammount) {
         if (!lista.isEmpty() || ammount > 0) {
@@ -51,6 +43,16 @@ public class Employee extends Person {
             System.out.println("Lista este goala");
         }
     }
+
+    public int sumSalaryOfEmployees(List<Employee> lista){
+        int sumOfSalary = 0;
+        for(Employee employee : lista){
+            sumOfSalary += employee.getSalary();
+        }
+        return sumOfSalary;
+    }
+
+
 }
 
 
