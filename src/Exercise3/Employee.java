@@ -1,12 +1,16 @@
 package Exercise3;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class Employee extends Person {
     private int salary;
     private String company;
+
+
+    public Employee() {
+
+    }
 
     public Employee(String name, int age, int salary, String company) {
         super(name, age);
@@ -14,14 +18,9 @@ public class Employee extends Person {
         this.company = company;
     }
 
-    public Employee(String name, int age, int salary) {
-        super(name, age);
-        this.salary = salary;
-
-    }
-
-    public Employee() {
-
+    public Employee(List<Employee> employeeList, int ammount) {
+        super(employeeList, ammount);
+        //this.getSalary(employeeList,ammount);
     }
 
     public int getSalary() {
@@ -41,18 +40,16 @@ public class Employee extends Person {
                 '}';
     }
 
-
-    public List<String> getSalaryMoreSpecificAmount(List<Employee> list, int amount) {
-        List<String> result = new ArrayList<>();
-
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getSalary() > amount) {
-                System.out.println(list.get(i).getName());
-               // result.add(i, list.get(i).getName());
-                //result.add(i, list.get(i).getName(), list.get(i).getAge(), list.get(i).getSalary());
+    public void getSalaryMore(List<Employee> lista, int ammount) {
+        if (!lista.isEmpty() || ammount > 0) {
+            for (Employee employee : lista) {
+                if (employee.getSalary() > ammount) {
+                    System.out.println(employee.getName() + " cu salariul de " + employee.getSalary());
+                }
             }
+        } else {
+            System.out.println("Lista este goala");
         }
-        return result;
     }
 }
 

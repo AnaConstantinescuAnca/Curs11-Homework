@@ -42,23 +42,26 @@ public class Main {
             mapNameAge.put(list.get(i).name(), list.get(i).age());
         }
         Set<Map.Entry<String, Integer>> entries = mapNameAge.entrySet();
-        if(!entries.isEmpty()){
-            System.out.println("Afisam numele si varsta persoanelor: " + entries);
-        }else{
+        System.out.println("Afisam numele si varsta persoanelor");
+        if (!entries.isEmpty()) {
+            for (Map.Entry<String, Integer> entry : entries) {
+                System.out.println(String.format("%s are %d ani", entry.getKey(), entry.getValue()));
+            }
+        } else {
             System.out.println("Lista este goala");
         }
 
+
         //2.3 extract the persons that are older than a given age
-        int ageOlder = 20;
-        List<Persons> personsListOlder = new ArrayList<>();
-        if (!list.isEmpty()) {
-            for (int i = 0; i < list.size(); i++) {
-                if (list.get(i).age() > ageOlder) {
-                    personsListOlder.add(i, list.get(i));
+        int ageOlder = 44;
+        if (!list.isEmpty() && ageOlder > 0) {
+            for (Persons pers : list) {
+                if (pers.age() > ageOlder) {
+                    System.out.println(pers.name() + " " + pers.age());
+                } else {
+                    System.out.println(String.format("Nu avem persoane cu varsta mai mare de %d ", ageOlder));
                 }
             }
-            System.out.println(String.format("Lista persoanelor cu varsta mai mare de %d este: ", ageOlder) + personsListOlder);
-
         } else {
             System.out.println("Lista persoanelor este goala");
         }
